@@ -37,7 +37,7 @@ defmodule PopulationSim do
   def live_neighbours(cell, grid) do
     neighbouring_indices(cell)
     |> neighbouring_cells(grid)
-    |> Enum.map(&Enum.sum/1)
+    |> List.flatten()
     |> Enum.sum()
     |> sub_value_from_cell(cell, grid)
   end
