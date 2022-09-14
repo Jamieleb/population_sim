@@ -38,6 +38,24 @@ defmodule PopulationSimTest do
     [0, 0, 0, 0, 0, 0, 0, 0, 0]
   ]
 
+  describe "proliferate" do
+    test "for one tick use function with arity of 1" do
+      assert PopulationSim.proliferate(@initial_grid) == @state_after_one_tick
+    end
+
+    test "for 0 ticks, return nil" do
+      assert PopulationSim.proliferate(@initial_grid, 0) == nil
+    end
+
+    test "for 1 tick and proliferate/2" do
+      assert PopulationSim.proliferate(@initial_grid, 1) == @state_after_one_tick
+    end
+
+    test "for 10 ticks" do
+      assert PopulationSim.proliferate(@initial_grid, 10) == @state_after_ten_ticks
+    end
+  end
+
   describe "range_within_boundary function" do
     test "for central cell" do
       assert PopulationSim.range_within_boundary(4) == 3..5
