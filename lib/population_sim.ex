@@ -3,6 +3,14 @@ defmodule PopulationSim do
   Documentation for `PopulationSim`.
   """
 
+  def live_neighbours(cell, grid) do
+    neighbouring_indices(cell)
+    |> neighbouring_cells(grid)
+    |> Enum.map(&Enum.sum/1)
+    |> Enum.sum()
+    |> sub_value_from_cell(cell, grid)
+  end
+
   def neighbouring_indices({x_position, y_position}) do
     x_range = range_within_boundary(x_position)
     y_range = range_within_boundary(y_position)

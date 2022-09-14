@@ -66,6 +66,28 @@ defmodule PopulationSimTest do
     end
   end
 
+  describe "live_neighbours" do
+    test "calculate for central cell with 1 live neighbour" do
+      assert PopulationSim.live_neighbours({4, 3}, @initial_grid) == 1
+    end
+
+    test "calculate for central cell with 2 live neighbours" do
+      assert PopulationSim.live_neighbours({4, 2}, @initial_grid) == 2
+    end
+
+    test "calculate for edge cell with 0 live neighbours" do
+      assert PopulationSim.live_neighbours({0, 0}, @initial_grid) == 0
+    end
+
+    test "calculate for edge cell with 1 live neighbours" do
+      assert PopulationSim.live_neighbours({0, 1}, @initial_grid) == 1
+    end
+
+    test "calculate for edge cell with 2 live neighbours" do
+      assert PopulationSim.live_neighbours({3, 0}, @initial_grid) == 2
+    end
+  end
+
   describe "neighbouring_cells" do
     test "neighbouring cells function for central cell" do
       assert PopulationSim.neighbouring_cells({3..5, 2..4}, @initial_grid) == [
