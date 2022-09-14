@@ -104,6 +104,29 @@ defmodule PopulationSimTest do
              ]
     end
   end
+
+  describe "cell value after proliferation" do
+    test "live cell with fewer than two live neighbours" do
+      assert PopulationSim.cell_value_after_proliferation(1, {2, 0}, @initial_grid) == 0
+    end
+
+    test "live cell with more than three live neighbours" do
+      assert PopulationSim.cell_value_after_proliferation(1, {2, 1}, @initial_grid) == 0
+    end
+
+    test "live cell with two live neighbours" do
+      assert PopulationSim.cell_value_after_proliferation(1, {2, 2}, @initial_grid) == 1
+    end
+
+    test "dead cell with two live neighbours" do
+      assert PopulationSim.cell_value_after_proliferation(0, {3, 2}, @initial_grid) == 0
+    end
+
+    test "live cell with three live neighbours" do
+      assert PopulationSim.cell_value_after_proliferation(0, {1, 1}, @initial_grid) == 1
+    end
+  end
+
   describe "value_at_coordinates function" do
     test "cell in centre" do
       assert PopulationSim.value_at_coordinates({3, 2}, @initial_grid) == 1

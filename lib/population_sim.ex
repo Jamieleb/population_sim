@@ -3,6 +3,22 @@ defmodule PopulationSim do
   Documentation for `PopulationSim`.
   """
 
+  def cell_value_after_proliferation(cell_value, cell, grid) do
+    case {cell_value, live_neighbours(cell, grid)} do
+      {1, surrounding_population} when surrounding_population < 2 ->
+        0
+
+      {1, surrounding_population} when surrounding_population > 3 ->
+        0
+
+      {0, surrounding_population} when surrounding_population != 3 ->
+        0
+
+      _ ->
+        1
+    end
+  end
+
   def live_neighbours(cell, grid) do
     neighbouring_indices(cell)
     |> neighbouring_cells(grid)
