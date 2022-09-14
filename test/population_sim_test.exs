@@ -38,6 +38,22 @@ defmodule PopulationSimTest do
     [0, 0, 0, 0, 0, 0, 0, 0, 0]
   ]
 
+  describe "neighbouring_cells" do
+    test "neighbouring cells function for central cell" do
+      assert PopulationSim.neighbouring_cells({3..5, 2..4}, @initial_grid) == [
+               [1, 0, 0],
+               [0, 0, 0],
+               [0, 0, 0]
+             ]
+    end
+
+    test "neighbouring cells function for edge cell" do
+      assert PopulationSim.neighbouring_cells({0..1, 0..1}, @initial_grid) == [
+               [0, 0],
+               [0, 0]
+             ]
+    end
+  end
   describe "value_at_coordinates function" do
     test "cell in centre" do
       assert PopulationSim.value_at_coordinates({3, 2}, @initial_grid) == 1
