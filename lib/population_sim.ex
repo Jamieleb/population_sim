@@ -53,8 +53,8 @@ defmodule PopulationSim do
   def range_within_boundary(position), do: (position - 1)..(position + 1)
 
   def neighbouring_cells({x_range, y_range}, grid) do
-    Enum.to_list(y_range)
-    |> Enum.map(&Enum.at(grid, &1))
+    grid
+    |> Enum.slice(y_range)
     |> Enum.map(&Enum.slice(&1, x_range))
   end
 
