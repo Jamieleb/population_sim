@@ -1,5 +1,7 @@
 # PopulationSim
 
+Live coding interview task. Completed under time pressure (90mins)
+
 ## Task
 Create a function to model a simulated population growth/decline system.
 The system is represented as a two-dimensional grid of square cells, each of which is in one of two possible states: alive or dead, "populated" or "unpopulated", 1 or 0. Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
